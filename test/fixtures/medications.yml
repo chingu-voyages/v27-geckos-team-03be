@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  dosage: MyString
+  description: MyString
 
 two:
   name: MyString
-  dosage: MyString
+  description: MyString

@@ -7,4 +7,6 @@ class User < ApplicationRecord
     # AccountabilityPartner Model to User Associations
     has_many :prescriptions
     has_many :medications, through: :prescriptions
+    #Validations 
+    validates :name, presence: true
 end
