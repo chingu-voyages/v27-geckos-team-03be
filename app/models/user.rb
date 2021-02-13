@@ -10,5 +10,5 @@ class User < ApplicationRecord
     #Validations 
     validates :name,:username, :email, :phone, :password,presence: true
     validates :email, :username, uniqueness: {case_sensitive: false}
-    
+    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 end
