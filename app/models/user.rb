@@ -8,5 +8,7 @@ class User < ApplicationRecord
     has_many :prescriptions
     has_many :medications, through: :prescriptions
     #Validations 
-    validates :name, presence: true
+    validates :name,:username, :email, :phone, :password,presence: true
+    validates :email, :username, uniqueness: {case_sensitive: false}
+    
 end
