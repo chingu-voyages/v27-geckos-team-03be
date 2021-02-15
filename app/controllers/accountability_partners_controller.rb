@@ -1,0 +1,2 @@
+class AccountabilityPartnersController < ApplicationController
+end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tier: MyString
+  frequency: MyString
+  medication: one
+  user: one
+  expiration_date: MyString
+
+two:
+  tier: MyString
+  frequency: MyString
+  medication: two
+  user: two
+  expiration_date: MyString
