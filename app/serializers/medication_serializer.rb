@@ -1,3 +1,3 @@
 class MedicationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :dosage
+  attributes :id, :name, :description
 end
