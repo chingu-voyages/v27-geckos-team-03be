@@ -11,8 +11,10 @@ class UsersController < ApplicationController
     end
 
     def create 
-        user = User.new(user_params)
+        user = User.new(name: params[:name],username: params[:username], email: params[:email], phone: params[:phoneNumber].to_s, password: params[:password],profile_pic: Faker::Avatar.image)
+    #    byebug
         if user.save
+            # byebug
         render json: user
         else render json: {error: 'Unable to create user'}, status: 400 
         end
@@ -39,12 +41,16 @@ class UsersController < ApplicationController
     end 
 
     def login 
+        byebug
         login_user = User.find_by(email: params[:email])
-            if (login_user && login_user.authenticate(params[:password]))
+        byebug
+            if (login_user && login_user.password == params[:password])
+                byebug
+            # if (login_user && login_user.authenticate(params[:password]))
                 token = JWT.encode(
                     {user_id: login_user.id},
                     'so_secret', 'HS256')
-                render json: {user: UserSerliaizer.new(login_user), token:token}
+                render json: {user: UserSerializer.new(login_user), token:token}
             else 
                 render json: {message: 'Invalid username or password'}, status: :unauthorized
             end
@@ -63,11 +69,12 @@ class UsersController < ApplicationController
             render json: loggedInUser, status: 200 
         else 
             render json: {message: "Not logged in"}, status: :unauthorized
+        end
     end
 
     private 
     def user_params
-        params.permit(:name, :username,:email, :password, :phone)
+        params.permit(:name, :username,:email, :password, :phone, :profile_pic)
         # missing profile pic
     end 
 
