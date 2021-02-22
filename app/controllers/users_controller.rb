@@ -12,11 +12,11 @@ class UsersController < ApplicationController
 
     def create 
         user = User.new(name: params[:name], username: params[:username], email: params[:email], phone: params[:phone], password: params[:password],profile_pic: Faker::Avatar.image)
-       byebug
+    #    byebug
         if user.save
             token = JWT.encode({user_id: user.id}, 'so_secret', 'HS256')
             render json: {user: UserSerializer.new(user), token:token}
-            byebug
+            # byebug
         else render json: {error: user.errors.full_messages}, status: 400 
         end
     end 
