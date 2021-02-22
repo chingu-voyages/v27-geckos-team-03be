@@ -11,12 +11,13 @@ class UsersController < ApplicationController
     end
 
     def create 
-        user = User.new(name: params[:name],username: params[:username], email: params[:email], phone: params[:phoneNumber].to_s, password: params[:password],profile_pic: Faker::Avatar.image)
-    #    byebug
+        user = User.new(name: params[:name], username: params[:username], email: params[:email], phone: params[:phone], password: params[:password],profile_pic: Faker::Avatar.image)
+       byebug
         if user.save
-            # byebug
-        render json: user
-        else render json: {error: 'Unable to create user'}, status: 400 
+            token = JWT.encode({user_id: user.id}, 'so_secret', 'HS256')
+            render json: {user: UserSerializer.new(user), token:token}
+            byebug
+        else render json: {error: user.errors.full_messages}, status: 400 
         end
     end 
 
@@ -41,17 +42,18 @@ class UsersController < ApplicationController
     end 
 
     def login 
-        byebug
+        # byebug
         login_user = User.find_by(email: params[:email])
-        byebug
+        # byebug
             if (login_user && login_user.password == params[:password])
-                byebug
+                # byebug
             # if (login_user && login_user.authenticate(params[:password]))
                 token = JWT.encode(
                     {user_id: login_user.id},
                     'so_secret', 'HS256')
                 render json: {user: UserSerializer.new(login_user), token:token}
             else 
+                
                 render json: {message: 'Invalid username or password'}, status: :unauthorized
             end
     end
