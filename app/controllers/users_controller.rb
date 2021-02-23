@@ -59,16 +59,22 @@ class UsersController < ApplicationController
     end
 
     def autologin
+        # byebug
         auth_header = request.headers['Authorization']
         #get token from the headers 
+        # byebug
         token = auth_header.split(' ')[1]
         #decode token using JWT library 
+        # byebug
         decoded_token = JWT.decode(token, 'so_secret', true, {algorithm: 'HS256'})
+        # byebug
         #get user id from the decoded token
         user_id = decoded_token[0]["user_id"]
-        loggedInUser = User.find_by(id: user_id)
-        if loggedInUser
-            render json: loggedInUser, status: 200 
+        # byebug
+        logged_in_user = User.find_by(id: user_id)
+        # byebug
+        if logged_in_user
+            render json: {user: UserSerializer.new(logged_in_user), token: token}, status: 200 
         else 
             render json: {message: "Not logged in"}, status: :unauthorized
         end
