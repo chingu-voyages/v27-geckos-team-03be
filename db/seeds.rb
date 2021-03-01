@@ -116,3 +116,31 @@ Prescription.create([
 }]
 )
 puts " prescriptions compelete"
+puts "create accountability partners"
+
+AccountabilityPartner.create(
+    {patient_id:User.all.second.id,
+    partner_id:User.all.third.id,}
+)
+AccountabilityPartner.create(
+    {patient_id:User.all.first.id,
+    partner_id:User.all.second.id,}
+)
+AccountabilityPartner.create(
+    {patient_id:User.all.third.id,
+    partner_id:User.all.fourth.id,}
+)
+AccountabilityPartner.create(
+    {patient_id:User.all.fourth.id,
+    partner_id:User.all.first.id,}
+)
+AccountabilityPartner.create(
+    {patient_id:User.all.fifth.id,
+    partner_id:User.all.first.id,}
+)
+AccountabilityPartner.create(
+    {patient_id:User.all.first.id,
+    partner_id:User.all.fifth.id,}
+)
+
+puts "accountability partners created"
