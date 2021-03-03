@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   get "/autologin", to: "users#autologin"
   post "/signup", to: "users#create"
+  delete "/deleteuser", to: "users#destroy"
+
 end
+Å
