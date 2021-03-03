@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :accountability_partners, only: [:index]
   resources :prescriptions, only: [:index]
   resources :medications, only: [:index]
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 #User Custom Routes 
   post "/login", to: "users#login"
