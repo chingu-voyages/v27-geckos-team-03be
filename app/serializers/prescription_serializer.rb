@@ -1,5 +1,6 @@
 class PrescriptionSerializer < ActiveModel::Serializer
-  attributes :id, :tier, :frequency, :expiration_date
+  attributes :id, :hours, :weekdays
   has_one :medication
   has_one :user
+  has_many :dosages
 end

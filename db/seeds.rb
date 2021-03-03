@@ -10,7 +10,7 @@ User.destroy_all
 Prescription.destroy_all
 Medication.destroy_all
 AccountabilityPartner.destroy_all 
-
+Dosage.destroy_all
 puts "creating users"
 User.create([{
     name: "Vicente",
@@ -79,42 +79,36 @@ User.create([{
 puts "medication complete"
 puts "creating prescriptions"
 Prescription.create([
-    {
-    tier:"1",
-    expiration_date:"01/12/22",
-    frequency: "daily",
+{
+    hours:[10],
+    weekdays:[0,2,4,6],
     medication_id: Medication.all.first.id,
     user_id:User.all.first.id,
 },
-    {
-    tier:"2",
-    expiration_date:"02/25/22",
-    frequency: "twice a day",
+{
+    hours:[9,18],
+    weekdays:[0,5],
     medication_id: Medication.all.second.id,
     user_id:User.all.second.id,
 },
-    {
-    tier:"3",
-    expiration_date:"02/25/22",
-    frequency: "three times a day",
+{
+    hours:[7],
+    weekdays:[0,1,2,3],
     medication_id: Medication.all.third.id,
     user_id:User.all.third.id,
 },
-    {
-    tier:"2",
-    expiration_date:"02/26/22",
-    frequency: "daily",
+{
+    hours:[12,20],
+    weekdays:[0,1,2,3,4,5,6],
     medication_id: Medication.all.fourth.id,
     user_id: User.all.fourth.id,
 },
-    {
-    tier:"3",
-    expiration_date:"02/27/22",
-    frequency:"twice a day",
+{
+    hours:[8, 16],
+    weekdays:[0,1,2,3,4,5,6],
     medication_id: Medication.all.fifth.id,
     user_id:User.all.fifth.id,
-}]
-)
+}])
 puts " prescriptions compelete"
 puts "create accountability partners"
 
@@ -144,3 +138,10 @@ AccountabilityPartner.create(
 )
 
 puts "accountability partners created"
+puts "creating dosages"
+Dosage.create({taken:true,prescription_id: Prescription.all.first.id})
+Dosage.create({taken:true,prescription_id: Prescription.all.second.id})
+Dosage.create({taken:true,prescription_id: Prescription.all.third.id})
+Dosage.create({taken:true,prescription_id: Prescription.all.fourth.id})
+Dosage.create({taken:true,prescription_id: Prescription.all.fifth.id})
+puts "dosages created"

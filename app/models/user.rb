@@ -7,6 +7,8 @@ class User < ApplicationRecord
     # AccountabilityPartner Model to User Associations
     has_many :prescriptions, :dependent => :destroy
     has_many :medications, through: :prescriptions
+    #dosages
+    has_many :dosages, through: :prescriptions
     #Validations 
     validates :name,:username, :email, :phone, :password,presence: true
     validates :email, :username, uniqueness: {case_sensitive: false}
