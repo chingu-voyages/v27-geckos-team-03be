@@ -32,10 +32,10 @@ class UsersController < ApplicationController
     end 
 
     def destroy 
-                auth_header = request.headers['Authorization']
-                token = auth_header.split(' ')[1]
-                decoded_token = JWT.decode(token, 'so_secret', true, {algorithm: 'HS256'})
-                user_id = decoded_token[0]["user_id"]
+        auth_header = request.headers['Authorization']
+        token = auth_header.split(' ')[1]
+        decoded_token = JWT.decode(token, 'so_secret', true, {algorithm: 'HS256'})
+        user_id = decoded_token[0]["user_id"]
         user = user.find(user_id)
         if user 
             user.destroy
