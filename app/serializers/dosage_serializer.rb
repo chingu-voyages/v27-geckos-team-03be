@@ -1,4 +1,4 @@
 class DosageSerializer < ActiveModel::Serializer
-  attributes :id, :taken
+  attributes :id, :taken, :prescription
   has_one :prescription
 end
