@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_185644) do
+ActiveRecord::Schema.define(version: 2021_03_03_212936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2021_02_10_185644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "dosages", force: :cascade do |t|
+    t.boolean "taken"
+    t.bigint "prescription_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prescription_id"], name: "index_dosages_on_prescription_id"
+  end
+
   create_table "medications", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -30,13 +38,12 @@ ActiveRecord::Schema.define(version: 2021_02_10_185644) do
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.string "tier"
-    t.string "frequency"
     t.bigint "medication_id", null: false
     t.bigint "user_id", null: false
-    t.string "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "weekdays", default: [], array: true
+    t.integer "hours", default: [], array: true
     t.index ["medication_id"], name: "index_prescriptions_on_medication_id"
     t.index ["user_id"], name: "index_prescriptions_on_user_id"
   end
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_185644) do
     t.string "profile_pic"
   end
 
+  add_foreign_key "dosages", "prescriptions"
   add_foreign_key "prescriptions", "medications"
   add_foreign_key "prescriptions", "users"
 end
