@@ -29,7 +29,6 @@ class MedicationsController < ApplicationController
     end 
 
     def destroy 
-        byebug
         medicaiton = Medicaiton.find(params[:id])
         if medicaiton
                 medicaiton.destroy
