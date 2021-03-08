@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :dosages
   resources :accountability_partners, only: [:index, :create]
   resources :prescriptions, only: [:index,:create]
-  resources :medications, only: [:index,:create, :destroy]
+  resources :medications, only: [:index,:create]
   resources :users, only: [:index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 #User Custom Routes 
@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   delete "/delete_accountability", to: "accountability_partners#destroy"
 
   #medication custom Routes 
-delete "/delete_medication", to: "medication#destroy"
+delete "/medications/:id", to: "medications#destroy"
+
 end
