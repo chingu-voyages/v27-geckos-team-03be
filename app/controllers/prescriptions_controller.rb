@@ -10,7 +10,9 @@ class PrescriptionsController < ApplicationController
     end
 
     def create 
-        prescription = Prescription.new(prescription_params)
+        new_med = Medication.create(name: params[:medName], description: params[:medDescription])
+        user_id = JWT.decode(params[:userToken], 'so_secret', true, {algorithm: 'HS256'})
+        prescription = Prescription.new(medication_id: new_med, user_id: user_id, weekdays: params[:weekdays], hours: params[:hours])
         if prescription.save 
             render json: prescription
         else
@@ -40,7 +42,7 @@ class PrescriptionsController < ApplicationController
 
     private 
 
-    def prescription_params
-        params.permit(:tier, :frequency, :medication_id, :user_id, :expiration_date, )
-    end 
+    # def prescription_params
+    #     params.permit(:tier, :frequency, :medication_id, :user_id, :expiration_date, )
+    # end 
 end
