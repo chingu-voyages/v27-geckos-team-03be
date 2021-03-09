@@ -10,6 +10,7 @@ class MedicationsController < ApplicationController
     end
 
     def create 
+        # byebug
         medicaiton = Medication.new(medicaiton_params)
         if medicaiton.save 
             render json: medicaiton
@@ -29,10 +30,15 @@ class MedicationsController < ApplicationController
     end 
 
     def destroy 
-        medicaiton = Medicaiton.find(params[:id])
-        if medicaiton
-                medicaiton.destroy
-                render json: medicaiton, status: 200
+        # byebug
+        med = Medication.find_by(id: params[:id])
+        # byebug
+        prescript = Prescription.find_by(medication_id: params[:id])
+        # byebug
+        if med
+            # byebug
+                prescript.destroy
+                render json: med, status: 200
         else
             render json: {error: 'Unable to delete Medication'}, status: 400 
         end
