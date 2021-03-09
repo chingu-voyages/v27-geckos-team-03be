@@ -78,6 +78,7 @@ User.create([{
           
 puts "medication complete"
 puts "creating prescriptions"
+# user 1
 Prescription.create([
 {
     hours:[10],
@@ -89,7 +90,71 @@ Prescription.create([
     hours:[9,18],
     weekdays:[0,5],
     medication_id: Medication.all.second.id,
+    user_id:User.all.first.id,
+},
+{
+    hours:[7],
+    weekdays:[0,1,2,3],
+    medication_id: Medication.all.third.id,
+    user_id:User.all.first.id,
+},
+{
+    hours:[12,20],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fourth.id,
+    user_id: User.all.first.id,
+},
+{
+    hours:[8, 16],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fifth.id,
+    user_id:User.all.first.id,
+}])
+#user 2 
+Prescription.create([
+{
+    hours:[10],
+    weekdays:[0,2,4,6],
+    medication_id: Medication.all.first.id,
     user_id:User.all.second.id,
+},
+{
+    hours:[9,18],
+    weekdays:[0,5],
+    medication_id: Medication.all.second.id,
+    user_id:User.all.second.id,
+},
+{
+    hours:[7],
+    weekdays:[0,1,2,3],
+    medication_id: Medication.all.third.id,
+    user_id:User.all.second.id,
+},
+{
+    hours:[12,20],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fourth.id,
+    user_id: User.all.second.id,
+},
+{
+    hours:[8, 16],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fifth.id,
+    user_id:User.all.second.id,
+}])
+#user 3 
+Prescription.create([
+{
+    hours:[10],
+    weekdays:[0,2,4,6],
+    medication_id: Medication.all.first.id,
+    user_id:User.all.third.id,
+},
+{
+    hours:[9,18],
+    weekdays:[0,5],
+    medication_id: Medication.all.second.id,
+    user_id:User.all.third.id,
 },
 {
     hours:[7],
@@ -101,7 +166,71 @@ Prescription.create([
     hours:[12,20],
     weekdays:[0,1,2,3,4,5,6],
     medication_id: Medication.all.fourth.id,
+    user_id: User.all.third.id,
+},
+{
+    hours:[8, 16],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fifth.id,
+    user_id:User.all.third.id,
+}])
+#user 4 
+Prescription.create([
+{
+    hours:[10],
+    weekdays:[0,2,4,6],
+    medication_id: Medication.all.first.id,
+    user_id:User.all.fourth.id,
+},
+{
+    hours:[9,18],
+    weekdays:[0,5],
+    medication_id: Medication.all.second.id,
+    user_id:User.all.fourth.id,
+},
+{
+    hours:[7],
+    weekdays:[0,1,2,3],
+    medication_id: Medication.all.third.id,
+    user_id:User.all.fourth.id,
+},
+{
+    hours:[12,20],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fourth.id,
     user_id: User.all.fourth.id,
+},
+{
+    hours:[8, 16],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fifth.id,
+    user_id:User.all.fourth.id,
+}])
+# user 5  
+Prescription.create([
+{
+    hours:[10],
+    weekdays:[0,2,4,6],
+    medication_id: Medication.all.first.id,
+    user_id:User.all.fifth.id,
+},
+{
+    hours:[9,18],
+    weekdays:[0,5],
+    medication_id: Medication.all.second.id,
+    user_id:User.all.fifth.id,
+},
+{
+    hours:[7],
+    weekdays:[0,1,2,3],
+    medication_id: Medication.all.third.id,
+    user_id:User.all.fifth.id,
+},
+{
+    hours:[12,20],
+    weekdays:[0,1,2,3,4,5,6],
+    medication_id: Medication.all.fourth.id,
+    user_id: User.all.fifth.id,
 },
 {
     hours:[8, 16],
@@ -139,9 +268,29 @@ AccountabilityPartner.create(
 
 puts "accountability partners created"
 puts "creating dosages"
-Dosage.create({taken:true,prescription_id: Prescription.all.first.id})
-Dosage.create({taken:true,prescription_id: Prescription.all.second.id})
-Dosage.create({taken:true,prescription_id: Prescription.all.third.id})
-Dosage.create({taken:true,prescription_id: Prescription.all.fourth.id})
-Dosage.create({taken:true,prescription_id: Prescription.all.fifth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.first.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.second.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.third.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.fourth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.fifth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.sixth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.seventh.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.eighth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.tenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.eleventh.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twelfth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.thirteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.fourteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.fifteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.sixteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.seventeenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.eighteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.nineteenth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twentieth.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twenty.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twentyfirst.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twentysecond.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.twentythird.id})
+# Dosage.create({taken:true,prescription_id: Prescription.all.last.id})
+Prescription.all.each{|pres| Dosage.create({taken:true,prescription_id: pres.id})}
 puts "dosages created"
