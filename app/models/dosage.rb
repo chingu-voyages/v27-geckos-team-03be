@@ -1,3 +1,3 @@
 class Dosage < ApplicationRecord
-  belongs_to :prescription
+  belongs_to :prescription, dependent: :destroy
 end
