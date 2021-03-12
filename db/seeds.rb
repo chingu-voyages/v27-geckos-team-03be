@@ -58,22 +58,28 @@ User.create([{
     puts "creating medications"
     med1 = Medication.create({
     name: "Levothyroxine",
-    description:Faker::Lorem.paragraph
+    description:Faker::Lorem.paragraph,
+    fda_number:"NDA021116"
     })
     med2 = Medication.create({
-    name: "Lisinopri",
-    description:Faker::Lorem.paragraph
+    name: "Claritin",
+    description:Faker::Lorem.paragraph,
+    fda_number:"NDA020470"
     })
     med3 = Medication.create({
     name: "Atorvastatin",            
-    description:Faker::Lorem.paragraph})
+    description:Faker::Lorem.paragraph,
+    fda_number:"ANDA205300"
+    })
     med4 = Medication.create({
     name: "Metformin",
-    description:Faker::Lorem.paragraph
+    description:Faker::Lorem.paragraph, 
+    fda_number:"ANDA077078"
     })
     med5 =Medication.create({
     name: "Amlodipine",
-    description:Faker::Lorem.paragraph
+    description:Faker::Lorem.paragraph,
+    fda_number:"ANDA207807"
     })
           
 puts "medication complete"
@@ -268,29 +274,6 @@ AccountabilityPartner.create(
 
 puts "accountability partners created"
 puts "creating dosages"
-# Dosage.create({taken:true,prescription_id: Prescription.all.first.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.second.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.third.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.fourth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.fifth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.sixth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.seventh.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.eighth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.tenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.eleventh.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twelfth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.thirteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.fourteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.fifteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.sixteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.seventeenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.eighteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.nineteenth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twentieth.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twenty.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twentyfirst.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twentysecond.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.twentythird.id})
-# Dosage.create({taken:true,prescription_id: Prescription.all.last.id})
+
 Prescription.all.each{|pres| Dosage.create({taken:true,prescription_id: pres.id})}
 puts "dosages created"
