@@ -10,11 +10,17 @@ class PrescriptionsController < ApplicationController
     end
 
     def create 
-        new_med = Medication.create(name: params[:medName], description: params[:medDescription])
-        user_id = JWT.decode(params[:userToken], 'so_secret', true, {algorithm: 'HS256'})
-        prescription = Prescription.new(medication_id: new_med, user_id: user_id, weekdays: params[:weekdays], hours: params[:hours])
+        # byebug
+        default_description = "Add note here"
+        new_med = Medication.create(name: params[:medName], description: default_description, fda_number: params[:fda_number])
+        # byebug
+        user = JWT.decode(params[:userToken], 'so_secret', true, {algorithm: 'HS256'})
+        user_id = user[0]["user_id"]
+        # byebug
+        prescription = Prescription.new(medication_id: new_med.id, user_id: user_id, weekdays: params[:weekdays], hours: params[:hours])
+        # byebug
         if prescription.save 
-            render json: prescription, status: 200
+            render json: {prescription: PrescriptionSerializer.new(prescription)}, status: 200
         else
             render json: {error: 'Unable to create Prescription'}, status: 400
         end
